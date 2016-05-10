@@ -71,9 +71,12 @@ set expandtab       " tabs are spaces
 "
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
+"   Toggle search hight lights
+let hlstate=0
+map <C-h>  :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
 
 "
 "  Shortcuts
 "
 map <C-n> :NERDTreeToggle<CR>
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+map <C-l> :set invnumber<CR>
