@@ -1,3 +1,6 @@
+" =====================================================
+"  Vundle
+" =====================================================
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -31,11 +34,22 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set laststatus=2
-syntax on
-set number
-map <C-n> :NERDTreeToggle<CR>
+" =====================================================
+"   Settings
+" =====================================================
+"
+"  UI
+"
+set laststatus=2  " always show statusline.
+syntax on         " enable syntax processing
+set number        " show line numbers
+set cursorline    " highlight current line
+set lazyredraw    " redraw only when we need to
+set showmatch     " highlight matching [{()}]
 
+"
+"  Show fancy font for vim-airline
+"
 set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
@@ -45,3 +59,21 @@ set term=xterm-256color
 set termencoding=utf-8
 let g:airline_powerline_fonts = 1
 
+"
+"  Tabs
+"
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set expandtab       " tabs are spaces
+
+"
+" Searching
+"
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+
+"
+"  Shortcuts
+"
+map <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <C-l> :nohl<CR><C-l>
