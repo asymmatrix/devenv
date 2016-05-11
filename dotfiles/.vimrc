@@ -78,5 +78,5 @@ map <C-h>  :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \
 "
 "  Shortcuts
 "
-map <C-n> :NERDTreeToggle<CR>
+map <C-?> :NERDTreeToggle<CR>
 map <C-l> :set invnumber<CR>
