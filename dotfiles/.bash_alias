@@ -2,3 +2,4 @@
 #alias ll='ls -l'
 alias ssh-nertz='ssh -K eat1-nertzgw01.grid.linkedin.com'
 alias ssh-war='ssh -K lva1-wargw01.grid.linkedin.com'
+alias ssh-holdem='ssh -K ltx1-holdemgw01.grid.linkedin.com'
