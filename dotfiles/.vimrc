@@ -63,10 +63,10 @@ let g:airline_powerline_fonts = 1
 "
 "  Tabs
 "
-set tabstop=4       " number of visual spaces per TAB
-set softtabstop=4   " number of spaces in tab when editing
+set tabstop=2       " number of visual spaces per TAB
+set softtabstop=2   " number of spaces in tab when editing
 set expandtab       " tabs are spaces
-set shiftwidth=4    " when indenting with '>', use 4 spaces width
+set shiftwidth=2    " when indenting with '>', use 4 spaces width
 
 "
 " Searching
@@ -76,6 +76,14 @@ set hlsearch            " highlight matches
 "   Toggle search hight lights
 let hlstate=0
 map <C-h>  :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
+
+"
+" Folding
+"
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+set foldmethod=indent   " fold based on indent level
 
 "
 "  Shortcuts
