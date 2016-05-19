@@ -48,6 +48,7 @@ set number        " show line numbers
 set cursorline    " highlight current line
 set lazyredraw    " redraw only when we need to
 set showmatch     " highlight matching [{()}]
+colorscheme jellybeans
 
 "
 "  Show fancy font for vim-airline
