@@ -20,6 +20,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdTree'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'motus/pig.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
