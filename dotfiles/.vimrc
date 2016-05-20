@@ -92,5 +92,5 @@ set foldmethod=indent   " fold based on indent level
 "
 "  Shortcuts
 "
-map <C-?> :NERDTreeToggle<CR>
+map <C-\> :NERDTreeToggle<CR>
 map <C-l> :set invnumber<CR>
