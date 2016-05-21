@@ -102,4 +102,6 @@ map <C-l> :set invnumber<CR>
 "
 set backupdir=~/.vim/working/backup_files//
 set directory=~/.vim/working/swap_files//
-set undodir=~/.vim/working/undo_files//
+if version >= 703
+  set undodir=~/.vim/working/undo_files//
+endif
