@@ -94,3 +94,12 @@ set foldmethod=indent   " fold based on indent level
 "
 map <C-\> :NERDTreeToggle<CR>
 map <C-l> :set invnumber<CR>
+
+"
+" vim working directory
+" Run this command in bash to create the directories
+"   mkdir -p ~/.vim/working/{backup_files,swap_files,undo_files}
+"
+set backupdir=~/.vim/working/backup_files//
+set directory=~/.vim/working/swap_files//
+set undodir=~/.vim/working/undo_files//
