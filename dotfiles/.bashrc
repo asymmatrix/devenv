@@ -5,6 +5,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 # otherwise hard code JAVA_HOME
 
+# without the following line svn is unhappy
+export EDITOR=vim
+
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
