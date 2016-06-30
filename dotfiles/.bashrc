@@ -1,6 +1,9 @@
 source ~/.bash_alias
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+fi
+# otherwise hard code JAVA_HOME
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
