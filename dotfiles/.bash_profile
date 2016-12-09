@@ -26,5 +26,6 @@ export NLS_LANG=American_America.UTF8
 export M2_HOME=/local/maven
 export M2=$M2_HOME/bin
 
-export PATH=$PATH:$JAVA_HOME/bin:/usr/local/bin:/usr/local/mysql/bin:/usr/local/linkedin/bin
+export SCALA_HOME='~/bin/scala-2.12.1'
+export PATH=$PATH:$JAVA_HOME/bin:/usr/local/bin:/usr/local/mysql/bin:/usr/local/linkedin/bin:$SCALA_HOME/bin
 
