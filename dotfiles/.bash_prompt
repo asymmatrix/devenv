@@ -39,7 +39,7 @@ function bash_prompt {
     fi
   }
 
-  export PS1="\n$LIGHT_BLUE[\d \T] $PURPLEBOLD\u $PURPLE@ $GREEN\w $RESETCOLOR$YELLOW\$(parse_git_branch)\n $REDBOLD[\#] $(prompt_str) $RESETCOLOR"
+  export PS1="\n$LIGHT_BLUE[\d \T] $PURPLEBOLD\u $PURPLE@ $GREEN\h:\w $RESETCOLOR$YELLOW\$(parse_git_branch)\n $REDBOLD[\#] $(prompt_str) $RESETCOLOR"
   export PS2="$REDBOLD   | $(prompt_str) $RESETCOLOR"
 }
 
