@@ -22,6 +22,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'motus/pig.vim'
 Plugin 'elzr/vim-json'
+Plugin 'junegunn/fzf'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
