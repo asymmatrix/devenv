@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/luzheng/.oh-my-zsh
+export ZSH=/home/luzheng/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -12,9 +12,9 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
-POWERLEVEL9K_DIR_HOME_BACKGROUND="red"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="red"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="red"
+POWERLEVEL9K_DIR_HOME_BACKGROUND="blue"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="blue"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="blue"
 
 
 # Set list of themes to load
@@ -68,6 +68,8 @@ POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="red"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  
+  # https://github.com/unixorn/fzf-zsh-plugin?tab=readme-ov-file#oh-my-zsh
   fzf-zsh
 )
 
