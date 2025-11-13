@@ -3,15 +3,19 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/luzheng/.oh-my-zsh
+fpath=($fpath /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions
+	/usr/share/zsh/functions
+	/usr/share/zsh/5.9/functions/ $fpath
+	~/.zsh/completions/src $fpath)
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 POWERLEVEL9K_DIR_HOME_BACKGROUND="blue"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="blue"
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="blue"
@@ -104,7 +108,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FBANDROID_DIR=/Users/luzheng/fbsource/fbandroid
 alias quicklog_update=/Users/luzheng/fbsource/fbandroid/scripts/quicklog/quicklog_update.sh
 alias qlu=quicklog_update
