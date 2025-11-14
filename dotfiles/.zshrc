@@ -75,6 +75,8 @@ plugins=(
   
   # https://github.com/unixorn/fzf-zsh-plugin?tab=readme-ov-file#oh-my-zsh
   fzf-zsh-plugin
+  # https://github.com/Aloxaf/fzf-tab
+  fzf-tab
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -117,3 +119,10 @@ export ANDROID_SDK=/opt/android_sdk
 export ANDROID_NDK_REPOSITORY=/opt/android_ndk
 export ANDROID_HOME=${ANDROID_SDK}
 export PATH=${PATH}:${ANDROID_SDK}/tools:${ANDROID_SDK}/platform-tools
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# Open in tmux popup if on tmux, otherwise use --height mode
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+
