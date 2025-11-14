@@ -74,7 +74,7 @@ plugins=(
   git
   
   # https://github.com/unixorn/fzf-zsh-plugin?tab=readme-ov-file#oh-my-zsh
-  fzf-zsh
+  fzf-zsh-plugin
 )
 
 source $ZSH/oh-my-zsh.sh
