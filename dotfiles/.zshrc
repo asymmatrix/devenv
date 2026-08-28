@@ -20,21 +20,39 @@ POWERLEVEL9K_DIR_HOME_BACKGROUND="006"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="006"
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="006"
 
-# Define a command that outputs text
 zsh_sl_bookmarks() {
-  local bm hash title
+  local bm hash title display status_str
 
   bm=$(sl log -r . -T '{remotebookmarks}\n' 2>/dev/null)
   [[ $? -ne 0 ]] && return
 
   if [[ -n "$bm" ]]; then
-    echo "$bm" | tr ' ' '\n' | sed 's|remote/fbcode/||g' | paste -sd '|' -
+    display=$(echo "$bm" | tr ' ' '\n' | sed 's|remote/fbcode/||g' | paste -sd '|' -)
   else
     hash=$(sl log -r . -T '{short(node)}\n' 2>/dev/null)
     title=$(sl log -r . -T '{desc|firstline}\n' 2>/dev/null)
     [[ ${#title} -gt 40 ]] && title="${title:0:37}..."
-    echo "${hash} ${title}"
+    display="[${hash}] ${title}"
   fi
+
+  # File status indicators
+  local st
+  st=$(sl status 2>/dev/null)
+  status_str=""
+
+  # ✚ = staged (added) changes
+  echo "$st" | grep -q '^A ' && status_str+="✚"
+
+  # ● = unstaged (modified) changes
+  echo "$st" | grep -q '^M ' && status_str+="●"
+
+  # ? = unknown/untracked files
+  echo "$st" | grep -q '^? ' && status_str+="?"
+
+  if [[ -n "$status_str" ]]; then
+    display="${display} %F{red}${status_str}%f"
+  fi
+  echo "$display"
 }
 
 # Use the built-in "custom" segment type
