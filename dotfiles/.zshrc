@@ -13,13 +13,40 @@ fpath=($fpath /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
-POWERLEVEL9K_DIR_HOME_BACKGROUND="blue"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="blue"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="blue"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
+POWERLEVEL9K_DIR_HOME_BACKGROUND="006"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="006"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="006"
 
+# Define a command that outputs text
+zsh_sl_bookmarks() {
+  local bm hash title
+
+  bm=$(sl log -r . -T '{remotebookmarks}\n' 2>/dev/null)
+  [[ $? -ne 0 ]] && return
+
+  if [[ -n "$bm" ]]; then
+    echo "$bm" | tr ' ' '\n' | sed 's|remote/fbcode/||g' | paste -sd '|' -
+  else
+    hash=$(sl log -r . -T '{short(node)}\n' 2>/dev/null)
+    title=$(sl log -r . -T '{desc|firstline}\n' 2>/dev/null)
+    [[ ${#title} -gt 40 ]] && title="${title:0:37}..."
+    echo "${hash} ${title}"
+  fi
+}
+
+# Use the built-in "custom" segment type
+POWERLEVEL9K_CUSTOM_SL_BOOKMARKS="zsh_sl_bookmarks"
+POWERLEVEL9K_CUSTOM_SL_BOOKMARKS_BACKGROUND="blue"
+POWERLEVEL9K_CUSTOM_SL_BOOKMARKS_FOREGROUND="white"
+POWERLEVEL9K_CUSTOM_SL_BOOKMARKS_ICON="\uF126"
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir custom_sl_bookmarks)
+
+# this vsc backend make everything very slow
+# typeset -g POWERLEVEL9K_VCS_BACKENDS=(git hg)
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -126,3 +153,10 @@ source <(fzf --zsh)
 # Open in tmux popup if on tmux, otherwise use --height mode
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 
+
+# PARA (2nd brain) workspace configuration
+export PARA_MODE="od"
+export PARA_GDRIVE_LOCAL="$HOME/gdrive"
+export PARA_GDRIVE_REMOTE="secondbrain"
+export PARA_ROOT="$HOME/gdrive"
+export PARA_AUTO_CONTEXT="1"

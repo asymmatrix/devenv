@@ -23,6 +23,8 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'motus/pig.vim'
 Plugin 'elzr/vim-json'
 Plugin 'junegunn/fzf'
+Plugin 'godlygeek/tabular'
+Plugin 'preservim/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
