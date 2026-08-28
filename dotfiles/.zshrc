@@ -12,7 +12,11 @@ fpath=($fpath /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
+
+
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+
+# color Cyan
 POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
@@ -20,8 +24,18 @@ POWERLEVEL9K_DIR_HOME_BACKGROUND="006"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="006"
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="006"
 
+# color Plum
+#POWERLEVEL9K_DIR_HOME_FOREGROUND="015"
+#POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="015"
+#POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="015"
+#POWERLEVEL9K_DIR_HOME_BACKGROUND="053"
+#POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="053"
+#POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="053"
+
+# mercurial HG status bar
+
 zsh_sl_bookmarks() {
-  local bm hash title display status_str
+  local bm hash title diff_num display status_str
 
   bm=$(sl log -r . -T '{remotebookmarks}\n' 2>/dev/null)
   [[ $? -ne 0 ]] && return
@@ -31,8 +45,14 @@ zsh_sl_bookmarks() {
   else
     hash=$(sl log -r . -T '{short(node)}\n' 2>/dev/null)
     title=$(sl log -r . -T '{desc|firstline}\n' 2>/dev/null)
+    diff_num=$(sl log -r . -T '{phabdiff}\n' 2>/dev/null)
     [[ ${#title} -gt 40 ]] && title="${title:0:37}..."
-    display="[${hash}] ${title}"
+
+    if [[ -n "$diff_num" ]]; then
+      display="%F{208}${diff_num}%f✧%F{208}${hash}%f✧${title}"
+    else
+      display="%F{208}${hash}%f✧${title}"
+    fi
   fi
 
   # File status indicators
@@ -40,18 +60,14 @@ zsh_sl_bookmarks() {
   st=$(sl status 2>/dev/null)
   status_str=""
 
-  # ✚ = staged (added) changes
   echo "$st" | grep -q '^A ' && status_str+="✚"
-
-  # ● = unstaged (modified) changes
   echo "$st" | grep -q '^M ' && status_str+="●"
-
-  # ? = unknown/untracked files
   echo "$st" | grep -q '^? ' && status_str+="?"
 
   if [[ -n "$status_str" ]]; then
     display="${display} %F{red}${status_str}%f"
   fi
+
   echo "$display"
 }
 
